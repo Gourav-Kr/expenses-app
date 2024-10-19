@@ -6,7 +6,7 @@ import DeleteUser from "./DeleteUser";
 // Fetch users from API
 const fetchUsers = async () => {
     try {
-        const res = await fetch(`/api/users`, { method: "GET" });
+        const res = await fetch(`/api/users`, { method: "GET" , cache: "no-store" });
         if (!res.ok) throw new Error("Error fetching users");
         const data = await res.json();
         return data.users;

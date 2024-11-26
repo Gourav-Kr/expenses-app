@@ -13,6 +13,7 @@ export async function POST(req) {
 export async function GET() {
     await connectToDatabase();
     const users = await User.find();
+    // console.log("call to db to get users");
     return NextResponse.json({users});    
 }
 

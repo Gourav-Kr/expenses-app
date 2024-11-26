@@ -39,3 +39,14 @@ cron.schedule('0 0 * * 6', async () => {
     console.error('Error in cron job:', e);
 }
 });
+
+// Schedule a task to ping the server every 14 minutes
+cron.schedule('*/14 * * * *', async () => {
+    console.log('Pinging server...');
+    try{
+    await fetch(process.env.NEXT_PUBLIC_API_URL); // Ping the server
+    console.log('Server pinged successfully.');
+} catch(e){
+    console.error('Error in cron job:', e);
+}
+});

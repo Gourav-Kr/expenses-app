@@ -14,16 +14,27 @@ const addUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const bal = parseInt(balance)
-    const inc = parseInt(increment)
-    const satal = parseInt(sat)
-
     if (!userName || !balance) {
       alert("name and balance are required")
       return
     }
 
-    console.log("name",userName)
+    const bal = parseInt(balance)
+    const inc = parseInt(increment)
+    const satal = parseInt(sat)
+
+    if( !bal ){
+      alert("balance must be a number")
+      return
+    }
+    if( !inc ){
+      alert("increment must be a number")
+      return
+    }
+    if( !satal ){
+      alert("saturday allowance must be a number")
+      return
+    }
 
     try {
 
@@ -70,7 +81,7 @@ const addUser = () => {
 
         <div className="relative mb-4">
           <label htmlFor="saturdayAllowance" className="leading-7 text-sm text-gray-600 mr-2">Saturday:</label>
-          <input onChange={(e) => setSat(e.target.value)} value={sat} type="text" id="saturdayAllowance" name="full-name" placeholder="saturday allowance" className=" text-sm w-1/2 bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-500 py-1 px-3 leading-3 transition-colors duration-200 ease-in-out" />
+          <input onChange={(e) => setSat(e.target.value)} value={sat} type="text" id="saturdayAllowance" name="full-name" placeholder="extra saturday allowance" className=" text-sm w-1/2 bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-500 py-1 px-3 leading-3 transition-colors duration-200 ease-in-out" />
         </div>
 
         <button type="submit" className="text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-md w-fit">Add</button>

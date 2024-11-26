@@ -6,7 +6,7 @@ import DeleteUser from "./DeleteUser";
 // Fetch users from API
 const fetchUsers = async () => {
     try {
-        const res = await fetch(`/api/users`, { method: "GET" , cache: "no-store" });
+        const res = await fetch("/api/users", { method: "GET", cache:"force-cache"});
         if (!res.ok) throw new Error("Error fetching users");
         const data = await res.json();
         return data.users;
@@ -52,7 +52,7 @@ const UserList = () => {
                         {/* Delete User Component at the top right corner */}
                         <div className="absolute top-2 right-2">
                             <DeleteUser userId={user._id} onUserDeleted={refreshUsers} />
-                        </div>
+                        </div> 
 
                         <div className="flex items-center space-x-4 mt-4 md:mt-0">
                             {/* Add Expense Component */}
